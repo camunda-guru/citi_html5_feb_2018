@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.8/xlsx.full.min.js">
+    </script>
+    <script>
+        var ExcelToJSON = function() {
+
+           var fileRef=document.getElementById("excelFile");
+            var file=fileRef.files[0];
+            console.log(file);
+            parseExcel(file);
+
+        };
+
+        function parseExcel(file) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var data = e.target.result;
+                //console.log(data);
+                var workbook = XLSX.read(data, {type : 'binary'});
+
+                workbook.SheetNames.forEach(function(sheetName) {
+                    // Here is your object
+                    var XL_row_object = XLSX.utils.sheet_to_row_object_array
+                    (workbook.Sheets[sheetName]);
+                    //console.log(XL_row_object )
+                    var json_object = JSON.stringify(XL_row_object);
+                   console.log(json_object);
+
+                })
+
+            };
+
+            reader.onerror = function(ex) {
+                console.log(ex);
+            };
+
+            reader.readAsBinaryString(file);
+        };
+    </script>
+</head>
+<body>
+<fieldset>
+
+    <label for="excelFile">Select Excel Sheet</label>
+    <input id="excelFile" type="file"
+           accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+           application/vnd.ms-excel" multiple>
+    <br/>
+    <button onclick="ExcelToJSON()">UpLoad</button>
+
+</fieldset>
+</body>
+</html>
