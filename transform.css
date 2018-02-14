@@ -1,0 +1,108 @@
+img#rabbit
+{
+    margin-left: 0%;
+    margin-top: 10%;
+    width:100px;
+    height: 100px;
+}
+img#carrot
+{
+    margin-left: 70%;
+    margin-top: 10%;
+    width:100px;
+    height: 100px;
+
+}
+/*
+img#rabbit:hover
+{
+ -webkit-transform: rotateX(45deg) scale(1,2) translate(200px,0px);
+-webkit-transition: all 6s ease;
+
+}
+img#butterfly:hover
+{
+    -webkit-transform: skew(20deg,60deg);
+    -webkit-transition: all 6s ease;
+
+}
+*/
+@-webkit-keyframes myanimation_carrot {
+    0% {
+
+        opacity:1.0;
+
+    }
+    50%
+    {
+       opacity:0.5;
+
+    }
+    100%
+    {
+        opacity:0.0;
+
+    }
+
+}
+
+
+@-webkit-keyframes myanimation {
+    0% {
+
+
+        -webkit-transform:  translate(100px,0px);
+        -webkit-transition: all 8s ease;
+    }
+    20% {
+
+        -webkit-transform:  translate(200px,-100px);
+        -webkit-transition: all 8s ease;
+    }
+    40% {
+
+        -webkit-transform:  translate(300px,0px);
+        -webkit-transition: all 8s ease;
+    }
+    60% {
+
+        -webkit-transform:  translate(500px,-100px);
+        -webkit-transition: all 8s ease;
+    }
+   80% {
+
+        -webkit-transform:  translate(1000px,0px);
+        -webkit-transition: all 8s ease;
+    }
+
+  100%
+  {
+      -webkit-transform:  rotateY(90deg) ;
+      -webkit-transition: all 14s  ease;
+
+  }
+
+
+
+}
+
+img#carrot
+{
+
+    -webkit-animation-name: myanimation_carrot;
+    -webkit-animation-duration: 8s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction:normal;
+    -webkit-animation-delay: 3s;
+    -webkit-animation-timing-function: linear;
+}
+
+img#rabbit {
+    -webkit-animation-name: myanimation;
+    -webkit-animation-duration: 8s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction:normal;
+    -webkit-animation-delay: 3s;
+    -webkit-animation-timing-function: linear;
+}
+
