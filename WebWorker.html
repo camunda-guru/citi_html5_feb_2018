@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        var objWorker;
+        function startWorker() {
+           
+            if (typeof (Worker) !== "undefined") {
+
+                if (typeof (objWorker) === "undefined") {
+                    
+
+                    objWorker = new Worker("testWebWorker.js");
+                    objWorker.onmessage = function (event)   // event listener
+                    {
+
+                        document.getElementById("result").innerHTML = event.data;// get data from Web Worker
+
+                    };
+
+                    objWorker.onerror = function (event) {  // onerror event listener 
+                        alert(event.message);               // event.message give the error message.
+                    };
+
+                }
+            }
+            else {
+                alert("No Web Worker support by browser..");
+            }
+            return false;
+        }
+
+        function stopWorker() {
+            if (typeof (objWorker) !== "undefined")
+            {
+                objWorker.terminate();
+                objWorker = undefined;
+            }
+            return false;
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <p>Count numbers: <output id="result"></output></p>
+    <button type="button" onclick="startWorker()">Start Worker</button> 
+    <button type="button" onclick="stopWorker()">Stop Worker</button>
+    <br><br>
+
+
+</body>
+</html>
