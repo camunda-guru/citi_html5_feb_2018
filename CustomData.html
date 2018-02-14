@@ -1,0 +1,61 @@
+<!DOCTYPE HTML> 
+<html>
+     <head>
+          <script type="text/javascript"> 
+ function updateDuration(elem)
+ {
+      var minElem=document.getElementById("minutes");
+       var secElem=document.getElementById("seconds"); 
+       var currMins=parseInt(minElem.innerHTML);
+        var currSecs=parseInt(secElem.innerHTML);
+      //data = elem.getAttribute('data-duration');
+
+     //alert(data);
+         var newLen=parseInt(elem.dataset.songduration);
+         console.log("Song duration",'',newLen);
+         var music=elem.dataset.music;
+         // console.log(music);
+         //parseInt(elem.getAttribute("data-duration"));
+          var mins=Math.floor(newLen/60);
+           var secs=newLen%60;
+            var newTotal=0;
+             if(elem.checked)
+             {
+                 var music=elem.dataset.music;
+                 console.log(music);
+             minElem.innerHTML=currMins+mins + music;
+              secElem.innerHTML=currSecs+secs; 
+              newTotal=(currMins*60)+currSecs+newLen;
+              }
+               else
+               {
+                    minElem.innerHTML=currMins-mins; 
+                    secElem.innerHTML=currSecs-secs;
+                     newTotal=(currMins*60)+currSecs-newLen; 
+                     }
+                      if(newTotal>600) 
+                      {
+                          minElem.style.color="#ff0000"; 
+                          secElem.style.color="#ff0000";} 
+                          else
+                           {
+                               minElem.style.color="#000000"; 
+                               secElem.style.color="#000000";} } 
+          </script> </head>
+     <body> 
+         <p>Choose songs - <strong>maximum 10 minutes</strong>.</p>
+          <p>Total length: <span id="minutes">0</span> mins <span id="seconds">0</span> seconds.</p>
+          <form> Song 1: <input type="checkbox" data-songduration="126" data-music="adhi"
+                                name="song1" onclick="updateDuration(this)"/><br/>
+              Song 2: <input type="checkbox" data-songduration="200" data-music="AR"
+                             name="song2" onclick="updateDuration(this)"/><br/>
+               Song 3: <input type="checkbox" data-songduration="185" data-music="Vijay"
+                              name="song3" onclick="updateDuration(this)"/><br/>
+              Song 4: <input type="checkbox" data-songduration="129" data-music="Vijay"
+                             name="song4" onclick="updateDuration(this)"/><br/>
+              Song 5: <input type="checkbox" data-songduration="122" data-music="Vijay"
+                             name="song5" onclick="updateDuration(this)"/>
+          </form> 
+     </body> </html> 
+
+
